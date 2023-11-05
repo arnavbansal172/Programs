@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form1</title>
+        <style>
+
+        </style>
+        <script>
+            function validform(){
+                let name1 = document.forms["form1"]["user"].value;
+                if (name1 =="" ){
+                    alert("please enter name");
+                    document.form1.user.focus();
+
+                return false;
+                }
+                else if(name1.length>5 && name1.length<10)
+                {
+                    alert("please enter name too many digits");
+                    document.form1.user.focus();
+
+                    return false;}
+                    let name2 = document.forms["form1"]["ps"].value;
+                    let name3 = document.forms["form1"]["cps"].value;
+                else if(name2 != name3){
+                    alert("please check your password")
+                    document.form1.cps.focus();
+                }
+
+            }
+
+            
+
+        </script>
+    </head>
+    <body>
+        <div class = "title">
+        <div class = "main title">
+            <p>Registration Form</p>
+        </div>
+        <form action="hello.html" name="form1" onsubmit="return validform()">
+            
+            <label for="hey">Username</label>
+            <input type="text" name="user" id="name" >
+            <br><br>
+            <label for="">Email</label>
+            <input type="email" name="email" id="em" >
+            <br><br>
+            <label for="">Password</label>
+            <input type="password" name="ps" id="pass" >
+            <br><br>
+            <label for="">Confirm Password</label>
+            <input type="password" name="cps" id="cpass" >
+            <br><br>
+            <label for="">Phone Number</label>
+            <input type="number" name="phone" id="mob" >
+            <br><br>
+           
+            <input type="submit" value="Login">
+        </form>
+    </body>
+</html>

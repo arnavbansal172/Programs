@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4 - Login Form</title>
+    <style>
+        body { 
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        div {
+            display: flex;
+            flex-direction: row;
+            height: max-content;
+            gap: 20px;
+            width: 400px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input, select {
+            height: 20px;
+            width: 200px;
+            border: 1px solid black;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <h1>VIT Login</h1>
+    <form action="post">
+        <div>
+            <h3>Username</h3>
+            <input type="text" id="username">
+        </div>
+        <div>
+            <h3>Password</h3>
+            <input type="password" id="password">
+        </div>
+        <div>
+            <h3>City</h3>
+            <input type="text" id="city">
+        </div>
+        <div>
+            <h3>Web Server</h3>
+            <select name="server" id="server">
+                <option value="Apache">Apache</option>
+                <option value="IIS">IIS</option>
+                <option value="Nginx">Nginx</option>
+            </select>
+        </div>
+        <div>
+            <h3>Role</h3>
+            <section>
+                <input type="radio" name="role" id="admin" value="admin">
+                <label for="admin">Admin</label>
+                <input type="radio" name="role" id="student" value="student">
+                <label for="student">Student</label>
+                <input type="radio" name="role" id="faculty" value="faculty">
+                <label for="faculty">Faculty</label>
+                <input type="radio" name="role" id="guest" value="guest">
+                <label for="guest">Guest</label>
+            </section>
+        </div>
+        <div>
+            <h3>SSO into these</h3>
+            <section>
+                <input type="checkbox" name="mail" id="mail">
+                <label for="mail">Mail</label>
+                <input type="checkbox" name="payroll" id="payroll">
+                <label for="payroll">Payroll</label>
+                <input type="checkbox" name="VTOP" id="VTOP">
+                <label for="VTOP">VTOP</label>
+            </section>
+        </div>
+        <div style="margin-top: 40px;">
+            <input type="submit">
+            <input type="reset">
+        </div>
+    </form>
+</body>
+</html>
