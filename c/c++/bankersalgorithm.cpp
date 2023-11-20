@@ -1,13 +1,15 @@
-#include <stdio.h>
+#include <iostream>
+#include <vector>
 
-int numProcesses = 5;  // Number of processes
-int numResources = 3;  // Number of resource types
+const int numProcesses = 5;  // Number of processes
+const int numResources = 3;  // Number of resource types
 
-int available[3];  // Available resources
-int maxClaim[5][3];  // Maximum claim of each process
-int allocation[5][3];  // Resources allocated to each process
+int available[numResources];  // Available resources
+int maxClaim[numProcesses][numResources];  // Maximum claim of each process
+int allocation[numProcesses][numResources];  // Resources allocated to each process
 
-void calculateNeed(int need[5][3]) {
+// Calculate the Need matrix
+void calculateNeed(int need[numProcesses][numResources]) {
     for (int i = 0; i < numProcesses; i++) {
         for (int j = 0; j < numResources; j++) {
             need[i][j] = maxClaim[i][j] - allocation[i][j];
@@ -15,9 +17,10 @@ void calculateNeed(int need[5][3]) {
     }
 }
 
-bool isSafeState(int need[5][3], int work[3], bool finish[5]) {
+// Check if granting a request would lead to an unsafe state
+bool isSafeState(int need[numProcesses][numResources], int work[numResources], bool finish[numProcesses]) {
     bool safe = true;
-    int workCopy[3];
+    int workCopy[numResources];
 
     for (int i = 0; i < numResources; i++) {
         workCopy[i] = work[i];
@@ -52,8 +55,9 @@ bool isSafeState(int need[5][3], int work[3], bool finish[5]) {
     return safe;
 }
 
-bool requestResources(int process, int request[3]) {
-    int need[5][3];
+// Request resources for a process
+bool requestResources(int process, int request[numResources]) {
+    int need[numProcesses][numResources];
     calculateNeed(need);
 
     // Check if the request is less than or equal to the need
@@ -77,7 +81,7 @@ bool requestResources(int process, int request[3]) {
         need[process][i] -= request[i];
     }
 
-    bool finish[5] = {false};
+    bool finish[numProcesses] = {false};
     if (isSafeState(need, available, finish)) {
         return true;  // Request is granted, and the system is in a safe state
     } else {
@@ -100,9 +104,9 @@ int main() {
     int requestingProcess = 0;
 
     if (requestResources(requestingProcess, request)) {
-        printf("Request granted. System is in a safe state.\n");
+        std::cout << "Request granted. System is in a safe state." << std::endl;
     } else {
-        printf("Request denied. Request would lead to an unsafe state.\n");
+        std::cout << "Request denied. Request would lead to an unsafe state." << std::endl;
     }
 
     return 0;

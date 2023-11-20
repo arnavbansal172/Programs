@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4 - Login Form</title>
+
+</head>
+<body>
+    <h1>VIT Login</h1>
+   <h2>REgular Expression</h2>
+   <script>
+
+// use i like this /java/i to remove case sensitivity
+// use ^ to see if sentence start with reg expression /^java/
+//let reg=/java$/ // if string ends with java
+//let reg = /j.ava/ // if there only 1 character between
+
+//characterset
+
+//let reg= /j[abc]ava/  //take any one character from a b c
+//let reg= /j[^abc]ava/  //apart from abc
+//let reg= /j[a-z][A-Z][F-P]ava/
+//let reg= /j[a-zA-J0-9]ava/
+//let reg= /ja*va[s-z]pt[pqr]/
+
+
+//Quantifiers
+//let reg=/ja{3}va/  //a will be repeted exact 3 timees
+
+//grouping
+
+//let reg=/j(av){2}a/
+//let reg=/(ja){2}va([a-z]p){2}/ //it selects a-z 2 times
+
+//username
+//start with char
+//min length should be 3
+//max length should be 15
+
+//let reg=/^[a-zA-Z][a-zA-Z0-9]{3,15}$/
+
+//phone number
+let reg =/^[0-9]{10}$/
+
+
+//let reg = /j.ava/ // if there 0 or more character between
+//let reg = /ja\*va/ //to mention special character like *
+//let reg=/ja?va/ //p is optional
+//
+
+
+
+//let reg=/8888888888/; //syntax regular expression
+    let str="9825272600"
+
+    let result= reg.exec(str);
+    console.log(result);
+
+    //let result=reg.test(str);
+    ///console.log(result);
+
+    //let result =str.match(reg);
+    //console.log(result);
+
+
+
+
+   </script>
+</body>
+</html>
