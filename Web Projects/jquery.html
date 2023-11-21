@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Elements</title>
+    <style>
+        .yellow-background {
+            background-color: yellow;
+        }
+
+        .style1 {
+            color: blue;
+            font-size: 16px;
+        }
+
+        .style2 {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        // 1. On click of a button, welcome message should display.
+function showWelcomeMessage() {
+    alert("Welcome!");
+}
+
+// 2. There are three input textboxes. On click of the input box, the background color should change to yellow.
+function changeBackgroundColor(element) {
+    element.style.backgroundColor = "yellow";
+}
+
+// 3. Remove and add different style to the element.
+// 4. Toggle the style properties of the element on click
+let isStyle1 = true;
+function changeStyle() {
+    const styledElement = document.getElementById("styledElement");
+    if (isStyle1) {
+        styledElement.classList.remove("style1");
+        styledElement.classList.add("style2");
+    } else {
+        styledElement.classList.remove("style2");
+        styledElement.classList.add("style1");
+    }
+    isStyle1 = !isStyle1;
+}
+
+// 5. Create one button and a textbox. On click of the button, the text written in the textbox should display on the button.
+function displayText() {
+    const inputTextValue = document.getElementById("inputText").value;
+    document.getElementById("displayTextButton").innerText = inputTextValue;
+}
+
+// Function to toggle style
+function toggleStyle() {
+    const styledElement = document.getElementById("styledElement");
+    styledElement.classList.toggle("style1");
+    styledElement.classList.toggle("style2");
+}
+
+    </script>
+</head>
+<body>
+
+    <button id="welcomeButton" onclick="showWelcomeMessage()">Show Welcome Message</button>
+
+    <div>
+        <input type="text" id="textbox1" class="changeBackground" onclick="changeBackgroundColor(this)">
+        <input type="text" id="textbox2" class="changeBackground" onclick="changeBackgroundColor(this)">
+        <input type="text" id="textbox3" class="changeBackground" onclick="changeBackgroundColor(this)">
+    </div>
+
+    <button id="changeStyleButton" onclick="changeStyle()">Change Style</button>
+
+    <div id="styledElement" class="style1">I am styled!</div>
+
+    <button id="toggleStyleButton" onclick="toggleStyle()">Toggle Style</button>
+
+    <br>
+
+    <input type="text" id="inputText">
+    <button id="displayTextButton" onclick="displayText()">Display Text</button>
+
+</body>
+</html>

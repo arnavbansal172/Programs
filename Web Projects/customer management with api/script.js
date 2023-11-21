@@ -1,3 +1,5 @@
+console.log("hello")
+
 const authUrl = "https://qa2.sunbasedata.com/sunbase/portal/api/assignment_auth.jsp";
 const createCustomerUrl = "https://qa2.sunbasedata.com/sunbase/portal/api/assignment.jsp";
 let authToken = "";  // Variable to store the Bearer token
@@ -35,6 +37,8 @@ async function login() {
 
 
 async function authenticateUser() {
+
+  console.log("authenticateuser")
     const loginData = {
         login_id: "test@sunbasedata.com",
         password: "Test@123"
@@ -224,4 +228,3 @@ async function updateCustomer() {
       console.error("Error during customer update:", error);
   }
 }
-

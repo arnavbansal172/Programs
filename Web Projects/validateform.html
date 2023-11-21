@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            resetErrors();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const pincode = document.getElementById("pincode").value;
+
+    
+    if (!validateUsername(username)) {
+        displayError("usernameError", "Please enter a valid username.");
+        return false;
+    }
+
+    if (!validatePassword(password)) {
+        displayError("passwordError", "Password must be at least 8 characters long.");
+        return false;
+    }
+
+    if (!validateEmail(email)) {
+        displayError("emailError", "Please enter a valid email address.");
+        return false;
+    }
+
+    if (!validatePhone(phone)) {
+        displayError("phoneError", "Please enter a valid phone number.");
+        return false;
+    }
+
+    if (!validatePincode(pincode)) {
+        displayError("pincodeError", "Please enter a valid pin code.");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+
+function validateUsername(username) {
+    return username.trim() !== "";
+}
+
+function validatePassword(password) {
+    return password.length >= 8;
+}
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function validatePhone(phone) {
+    const phonePattern = /^\d{10}$/;
+    return phonePattern.test(phone);
+}
+
+function validatePincode(pincode) {
+    const pincodePattern = /^\d{6}$/;
+    return pincodePattern.test(pincode);
+}
+
+function displayError(elementId, message) {
+    const errorElement = document.getElementById(elementId);
+    errorElement.textContent = message;
+}
+
+function resetErrors() {
+    const errorElements = document.getElementsByClassName("error");
+    for (const errorElement of errorElements) {
+        errorElement.textContent = "";
+    }
+}
+
+    </script>
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" name="username">
+        <span id="usernameError" class="error"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error"></span><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
+        <span id="phoneError" class="error"></span><br>
+
+        <label for="pincode">Pin Code:</label>
+        <input type="text" id="pincode" name="pincode">
+        <span id="pincodeError" class="error"></span><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
