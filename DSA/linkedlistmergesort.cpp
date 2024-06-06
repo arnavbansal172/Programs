@@ -1,6 +1,7 @@
 node* mergeTwoLists(node* l1, node* l2) {
 #include "../../../../../../TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/node_handle.h"
-#include "node.h"
+#include <node.h>
+#include <iostream>
 
 node* mergeTwoLists(node* l1, node* l2) {
     if (l1 == nullptr) {
